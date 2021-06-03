@@ -5,6 +5,12 @@ import DoneCallback = jest.DoneCallback;
 
 let server: Server = null;
 
+const options = {
+  source: 3001,
+  target: 3000,
+  host: 'localhost',
+};
+
 beforeAll(async (done: DoneCallback) => {
   try {
     server = createServer((req, res) => {
@@ -13,8 +19,8 @@ beforeAll(async (done: DoneCallback) => {
       res.end();
     });
 
-    server.listen(3000, () => {
-      console.info(`target up at ${3000}`);
+    server.listen(options.target, () => {
+      console.info(`target up at ${options.target}`);
       done();
     });
   } catch (err) {
@@ -35,12 +41,12 @@ describe('ssl-proxy tests', () => {
   it('can proxy', async (done) => {
     try {
       createProxy({
-        host: 'localhost',
-        source: 80,
-        target: 3000,
+        host: options.host,
+        source: options.source,
+        target: options.target,
       });
 
-      request('https://localhost:80/')
+      request(`https://${options.host}:${options.source}/`)
         .get('/')
         .trustLocalhost(true)
         .expect(200)

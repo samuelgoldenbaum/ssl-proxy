@@ -40,6 +40,11 @@ var http_1 = require("http");
 var request = require("supertest");
 var ssl_proxy_1 = require("../src/ssl-proxy");
 var server = null;
+var options = {
+    source: 3001,
+    target: 3000,
+    host: 'localhost',
+};
 beforeAll(function (done) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         try {
@@ -48,8 +53,8 @@ beforeAll(function (done) { return __awaiter(void 0, void 0, void 0, function ()
                 res.write('Hello world!');
                 res.end();
             });
-            server.listen(3000, function () {
-                console.info("target up at " + 3000);
+            server.listen(options.target, function () {
+                console.info("target up at " + options.target);
                 done();
             });
         }
@@ -74,11 +79,11 @@ describe('ssl-proxy tests', function () {
         return __generator(this, function (_a) {
             try {
                 ssl_proxy_1.default({
-                    host: 'localhost',
-                    source: 80,
-                    target: 3000,
+                    host: options.host,
+                    source: options.source,
+                    target: options.target,
                 });
-                request('https://localhost:80/')
+                request("https://" + options.host + ":" + options.source + "/")
                     .get('/')
                     .trustLocalhost(true)
                     .expect(200)
