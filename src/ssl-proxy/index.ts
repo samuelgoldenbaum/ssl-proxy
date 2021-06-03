@@ -11,8 +11,10 @@ export interface Options {
   source: number;
 }
 
+let proxy = null;
+
 export const createProxy = ({ host, target, source }: Options) => {
-  const proxy = createProxyServer({
+  proxy = createProxyServer({
     target: {
       host,
       port: target,
@@ -29,5 +31,9 @@ export const createProxy = ({ host, target, source }: Options) => {
 
   return proxy;
 };
+
+export const shutdownProxy = ((callback: () => void) => {
+  proxy.close(callback);
+});
 
 export default createProxy;

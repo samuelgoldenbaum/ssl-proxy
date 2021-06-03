@@ -1,6 +1,6 @@
 import { createServer, Server } from 'http';
 import * as request from 'supertest';
-import createProxy from '../src/ssl-proxy';
+import createProxy, { shutdownProxy } from '../src/ssl-proxy';
 import DoneCallback = jest.DoneCallback;
 
 let server: Server = null;
@@ -23,8 +23,10 @@ beforeAll(async (done: DoneCallback) => {
 });
 
 afterAll(async (done) => {
-  server.close();
-  server = null;
+  shutdownProxy(() => {
+    server.close();
+    server = null;
+  });
 
   done();
 });

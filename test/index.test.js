@@ -61,8 +61,10 @@ beforeAll(function (done) { return __awaiter(void 0, void 0, void 0, function ()
 }); });
 afterAll(function (done) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        server.close();
-        server = null;
+        ssl_proxy_1.shutdownProxy(function () {
+            server.close();
+            server = null;
+        });
         done();
         return [2 /*return*/];
     });
