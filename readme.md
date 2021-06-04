@@ -1,6 +1,6 @@
 ssl-proxy
 ===============
-[![Build Status](https://travis-ci.com/samuelgoldenbaum/ssl-proxy.svg?branch=master)](https://travis-ci.com/samuelgoldenbaum/ssl-proxy)
+![example workflow](https://github.com/samuelgoldenbaum/ssl-proxy/actions/workflows/main.yml/badge.svg)
 
 Lightweight proxy for local HTTPS development using self-assigned SSL certificate.
 
