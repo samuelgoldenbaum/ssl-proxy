@@ -10,8 +10,7 @@
   "bin": "./src/index.js",
   "scripts": {
     "test": "jest",
-    "lint": "npx eslint . --ext .ts",
-    "prepublish": "npm run test"
+    "lint": "npx eslint . --ext .ts"
   },
   "engines": {
     "node": ">=14.7.0"
