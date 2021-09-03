@@ -11,7 +11,7 @@ const options = {
   host: 'localhost',
 };
 
-beforeAll(async (done: DoneCallback) => {
+beforeAll((done: DoneCallback) => {
   try {
     server = createServer((req, res) => {
       res.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -28,7 +28,7 @@ beforeAll(async (done: DoneCallback) => {
   }
 });
 
-afterAll(async (done) => {
+afterAll((done) => {
   shutdownProxy(() => {
     server.close();
     server = null;
@@ -38,7 +38,7 @@ afterAll(async (done) => {
 });
 
 describe('ssl-proxy tests', () => {
-  it('can proxy', async (done) => {
+  it('can proxy', (done) => {
     try {
       createProxy({
         host: options.host,

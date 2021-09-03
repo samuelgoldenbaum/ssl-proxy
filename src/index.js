@@ -10,5 +10,5 @@ program
     .addOption(new commander_1.Option('-h, --host <port>', 'host').default('localhost'));
 program.parse(process.argv);
 var options = program.opts();
-ssl_proxy_1.default(options);
+(0, ssl_proxy_1.default)(options);
 //# sourceMappingURL=index.js.map
