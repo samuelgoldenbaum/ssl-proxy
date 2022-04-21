@@ -1,6 +1,6 @@
 {
   "name": "ssl-proxy",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lightweight proxy for local HTTPS development using self-assigned SSL certificate.",
   "repository": {
     "type": "git",
